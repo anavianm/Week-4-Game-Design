@@ -9,7 +9,7 @@ public class EnemyAi : MonoBehaviour
 
     public Transform player;
 
-    public LayerMask Floor, SM_rockstar;
+    public LayerMask Floor, Whatplayer;
 
     public Vector3 walkPoint;
     public Vector3 target;
@@ -25,7 +25,7 @@ public class EnemyAi : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("player").transform;
+        player = GameObject.Find("SM_rockstar").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -33,8 +33,8 @@ public class EnemyAi : MonoBehaviour
 
     void Update()
     {
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, SM_rockstar);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, SM_rockstar);
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, Whatplayer);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, Whatplayer);
         if (playerInSightRange && !playerInAttackRange) { ChasePlayer(); }
         else
         {
@@ -49,10 +49,15 @@ public class EnemyAi : MonoBehaviour
 
     private void Patroling()
     {
-        if (!walkPointSet) SearchWalkPoint();
-        walkPointSet = true;
-        if (walkPointSet) agent.SetDestination(walkPoint);
+        if (!walkPointSet)
+        {
+            SearchWalkPoint();
+        }
 
+        if (walkPointSet)
+        {
+            agent.SetDestination(walkPoint);
+        }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
