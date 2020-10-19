@@ -27,10 +27,9 @@ public class PlayerHealth : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-    
         if (other.gameObject.tag == "Bullet")
         {
-            TakeDamage(1);
+            TakeDamage(2);
         }
     }
 

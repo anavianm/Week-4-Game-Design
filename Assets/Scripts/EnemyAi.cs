@@ -26,7 +26,7 @@ public class EnemyAi : MonoBehaviour
     public GameObject projectile;
 
     public float sightRange, attackRange;
-    private bool playerInSightRange, playerInAttackRange;
+    private bool playerInSightRange, playerInAttackRange = false;
 
     private void Awake()
     {
@@ -61,7 +61,7 @@ public class EnemyAi : MonoBehaviour
         {
                 Patroling();
         }
-        //if (playerInAttackRange && playerInSightRange) { AttackPlayer(); }
+        
     }
 
     private void Patroling()
@@ -108,6 +108,7 @@ public class EnemyAi : MonoBehaviour
     private void ChasePlayer()
     {
             agent.SetDestination(player.position);
+            AttackPlayer();
     }
 
     private void ResetAttack()
@@ -116,12 +117,12 @@ public class EnemyAi : MonoBehaviour
     }
     private void AttackPlayer()
     {
-        agent.SetDestination(transform.position);
+        //agent.SetDestination(transform.position);
         transform.LookAt(player);
         if (!alreadyAttacked)
         {
             Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 20f, ForceMode.Impulse);
+            rb.AddForce(transform.forward * 8f, ForceMode.Impulse);
             rb.AddForce(transform.up * 13f, ForceMode.Impulse);
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);

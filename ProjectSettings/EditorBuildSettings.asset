@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/EnemyAiTest.unity
+    guid: da21b25bc375f4d839184bf0675b33dc
   m_configObjects: {}
