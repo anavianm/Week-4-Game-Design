@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class GameEvents : MonoBehaviour
 {
     public Slider slider;
+    public int SceneCount;
+    private int counter = 1;
+
     void Update()
             {
                if(slider.value == 0){
@@ -16,11 +19,15 @@ public class GameEvents : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-    
+        
         if (other.gameObject.tag == "Point")
         {
-            Debug.Log("Collision");
-            SceneManager.LoadScene("Scene"+1);
+            Debug.Log("Collision" + counter);
+if(SceneCount - counter != counter){
+            SceneManager.LoadScene("Scene"+ counter);
+}
+counter++;
+
         }
     }
 }
