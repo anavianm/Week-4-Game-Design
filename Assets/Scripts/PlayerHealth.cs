@@ -27,15 +27,25 @@ public class PlayerHealth : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
+        print(other.gameObject.tag);
         if (other.gameObject.tag == "Bullet")
         {
             TakeDamage(2);
+        }else if(other.gameObject.tag == "HealthPack"){
+            addHealth(2);
+            other.gameObject.SetActive(false);
+            print("here");
         }
     }
 
     void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        healthbar.setHealth(currentHealth);
+    }
+
+    void addHealth(int health){
+        currentHealth += health;
         healthbar.setHealth(currentHealth);
     }
 }
