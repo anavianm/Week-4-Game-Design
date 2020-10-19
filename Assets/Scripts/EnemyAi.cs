@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,6 +16,7 @@ public class EnemyAi : MonoBehaviour
     public Vector3 target;
     bool walkPointSet;
     public float walkPointRange;
+    bool cloneActive;
 
     public float timeBetweenAttacks;
     bool alreadyAttacked;
@@ -82,7 +84,7 @@ public class EnemyAi : MonoBehaviour
     }
     private void ChasePlayer()
     {
-        agent.SetDestination(player.position);
+            agent.SetDestination(player.position);
     }
 
     private void ResetAttack()
@@ -97,8 +99,8 @@ public class EnemyAi : MonoBehaviour
         if (!alreadyAttacked)
         {
             Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            rb.AddForce(transform.forward * 20f, ForceMode.Impulse);
+            rb.AddForce(transform.up * 13f, ForceMode.Impulse); 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
