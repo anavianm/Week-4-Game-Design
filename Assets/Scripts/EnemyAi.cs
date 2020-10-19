@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -45,7 +46,7 @@ public class EnemyAi : MonoBehaviour
             //check player is in view, not behind us, through dot prods
             Vector3 forward = Vector3.Normalize(transform.TransformDirection(Vector3.forward));
             Vector3 toPlayer = Vector3.Normalize(player.position - transform.position);
-      
+
             if (Vector3.Dot(forward, toPlayer) > 0.5)
             {
                 ChasePlayer();
@@ -69,7 +70,7 @@ public class EnemyAi : MonoBehaviour
         {
             SearchWalkPoint();
         }
-        
+
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
         distanceToWalkPoint.y = 0;
 
@@ -106,7 +107,7 @@ public class EnemyAi : MonoBehaviour
 
     private void ChasePlayer()
     {
-        agent.SetDestination(player.position);
+            agent.SetDestination(player.position);
     }
 
     private void ResetAttack()
@@ -120,9 +121,9 @@ public class EnemyAi : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            //Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            //rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            //rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            rb.AddForce(transform.forward * 20f, ForceMode.Impulse);
+            rb.AddForce(transform.up * 13f, ForceMode.Impulse);
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
