@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/EnemyAiTest.unity
+- path: Assets/Scenes/Enemy Player Moving.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
