@@ -15,17 +15,17 @@ public class EnemyAi : MonoBehaviour
     //public float[] waitTimes;
     private int currentPatrolPoint = 0;
 
-    public Vector3 walkPoint;
-    public Vector3 target;
+    private Vector3 walkPoint;
+    private Vector3 target;
     bool walkPointSet;
-    public float walkPointRange;
+    private float walkPointRange;
 
-    public float timeBetweenAttacks;
+    private float timeBetweenAttacks;
     bool alreadyAttacked;
-    public GameObject projectile;
+    private GameObject projectile;
 
     public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    private bool playerInSightRange, playerInAttackRange;
 
     private void Awake()
     {
@@ -38,17 +38,29 @@ public class EnemyAi : MonoBehaviour
     void Update()
     {
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, Whatplayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, Whatplayer);
-        if (playerInSightRange && !playerInAttackRange) { ChasePlayer(); }
-        else
-        {
-            if (!playerInSightRange)
+        //playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, Whatplayer);
+        if (playerInSightRange && !playerInAttackRange) {
+
+            //https://docs.unity3d.com/ScriptReference/Vector3.Dot.html
+            //check player is in view, not behind us, through dot prods
+            Vector3 forward = Vector3.Normalize(transform.TransformDirection(Vector3.forward));
+            Vector3 toPlayer = Vector3.Normalize(player.position - transform.position);
+      
+            if (Vector3.Dot(forward, toPlayer) > 0.5)
+            {
+                ChasePlayer();
+            }
+            else
             {
                 Patroling();
             }
 
         }
-        if (playerInAttackRange && playerInSightRange) { AttackPlayer(); }
+        else
+        {
+                Patroling();
+        }
+        //if (playerInAttackRange && playerInSightRange) { AttackPlayer(); }
     }
 
     private void Patroling()
