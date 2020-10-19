@@ -315,6 +315,7 @@
 "Assets/Scripts/CameraFollow.cs"
 "Assets/Scripts/DrawPathingGizmo.cs"
 "Assets/Scripts/EnemyAi.cs"
+"Assets/Scripts/GameEvents.cs"
 "Assets/Scripts/HealthBar.cs"
 "Assets/Scripts/MoveRandom.cs"
 "Assets/Scripts/PlayerController2.cs"

@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EnemyAiTest.unity
     guid: da21b25bc375f4d839184bf0675b33dc
+  - enabled: 1
+    path: Assets/Scenes/Scene1.unity
+    guid: daecbc4a5ac5246e18b40fafd8a7f6f8
+  - enabled: 1
+    path: Assets/Scenes/Scene2.unity
+    guid: 177024f68110b40f2bf729295e5f418a
   m_configObjects: {}

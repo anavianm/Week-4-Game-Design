@@ -109,6 +109,7 @@ public class EnemyAi : MonoBehaviour
     {
             agent.SetDestination(player.position);
             AttackPlayer();
+        Patroling();
     }
 
     private void ResetAttack()
