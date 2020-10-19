@@ -21,9 +21,9 @@ public class EnemyAi : MonoBehaviour
     bool walkPointSet;
     private float walkPointRange;
 
-    private float timeBetweenAttacks;
+    public float timeBetweenAttacks;
     bool alreadyAttacked;
-    private GameObject projectile;
+    public GameObject projectile;
 
     public float sightRange, attackRange;
     private bool playerInSightRange, playerInAttackRange;
@@ -118,7 +118,6 @@ public class EnemyAi : MonoBehaviour
     {
         agent.SetDestination(transform.position);
         transform.LookAt(player);
-
         if (!alreadyAttacked)
         {
             Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
