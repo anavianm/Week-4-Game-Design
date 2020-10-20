@@ -25,8 +25,11 @@ public class EnemyAi : MonoBehaviour
     bool alreadyAttacked;
     public GameObject projectile;
 
+    private bool playerSpotted = false;
+
     public float sightRange, attackRange;
     private bool playerInSightRange, playerInAttackRange = false;
+    private RaycastHit hit;
 
     private void Awake()
     {
@@ -47,12 +50,35 @@ public class EnemyAi : MonoBehaviour
             Vector3 forward = Vector3.Normalize(transform.TransformDirection(Vector3.forward));
             Vector3 toPlayer = Vector3.Normalize(player.position - transform.position);
 
-            if (Vector3.Dot(forward, toPlayer) > 0.5)
+            if ( (Vector3.Dot(forward, toPlayer) > 0.5 ) || playerSpotted)
             {
-                ChasePlayer();
+                if (!playerSpotted)
+                {
+                    //https://docs.unity3d.com/ScriptReference/Collider.Raycast.html
+                    //check LoS
+                    Vector3 eyelineOffset = new Vector3(0, 1.40f, 0);
+                    Physics.Raycast(transform.position + eyelineOffset, toPlayer, out hit, 30);
+                    //Debug.DrawRay(transform.position + eyelineOffset, toPlayer, Color.green, 40);
+                    if (hit.collider != null)
+                    {
+                        if (hit.collider.gameObject.name == "Player")
+                        {
+                            playerSpotted = true;
+                            print("Spotted player!");
+                        }
+                    }
+                }
+           
+
+                if ( playerSpotted)
+                {
+                    walkPointSet = false;
+                    ChasePlayer();
+                }
             }
             else
             {
+                playerSpotted = false;
                 Patroling();
             }
 
@@ -83,6 +109,8 @@ public class EnemyAi : MonoBehaviour
 
     private void SearchWalkPoint()
     {
+        if(patrolPath == null) {
+        }
         if (currentPatrolPoint == patrolPath.Length) {
             currentPatrolPoint = 0;
         }
@@ -109,7 +137,8 @@ public class EnemyAi : MonoBehaviour
     {
             agent.SetDestination(player.position);
             AttackPlayer();
-        Patroling();
+
+            Patroling();
     }
 
     private void ResetAttack()
