@@ -21,7 +21,7 @@ public class EnemyAi : MonoBehaviour
     bool walkPointSet;
     private float walkPointRange;
 
-    public float timeBetweenAttacks;
+    float timeBetweenAttacks=0.5f;
     bool alreadyAttacked;
     public GameObject projectile;
 
@@ -135,8 +135,12 @@ public class EnemyAi : MonoBehaviour
 
     private void ChasePlayer()
     {
-            agent.SetDestination(player.position);
-            AttackPlayer();
+        Vector3 distanceToPlayer = transform.position - player.position;
+        if(distanceToPlayer.magnitude > 2f) {
+            agent.SetDestination(Vector3.Lerp(transform.position, player.position, .5f));
+        }
+
+        AttackPlayer();
 
             Patroling();
     }
@@ -151,9 +155,11 @@ public class EnemyAi : MonoBehaviour
         transform.LookAt(player);
         if (!alreadyAttacked)
         {
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 8f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 13f, ForceMode.Impulse);
+
+            player.parent.GetComponentInChildren<PlayerHealth>().TakeDamage(1);
+            //Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            //rb.AddForce(transform.forward * 8f, ForceMode.Impulse);
+            //rb.AddForce(transform.up * 13f, ForceMode.Impulse);
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }

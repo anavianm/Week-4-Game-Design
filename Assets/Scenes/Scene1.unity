@@ -5306,6 +5306,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 8683811641676613189, guid: 0451dd2a4a80c4d748f0f480ce0a381d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.478
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0451dd2a4a80c4d748f0f480ce0a381d, type: 3}
 --- !u!1001 &8693052639812634118
