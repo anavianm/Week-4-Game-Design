@@ -171,6 +171,8 @@ MonoBehaviour:
     m_Bits: 512
   patrolPath:
   - {fileID: 0}
+  timeBetweenAttacks: 0
+  projectile: {fileID: 0}
   sightRange: 4
   attackRange: 1
 --- !u!1001 &3831210011227412488
@@ -188,7 +190,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 2f3b7351a7da5e5408979347f36bcba9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.128
+      value: -0.141
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2f3b7351a7da5e5408979347f36bcba9,
         type: 3}
@@ -238,17 +240,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 2f3b7351a7da5e5408979347f36bcba9,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 35
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2f3b7351a7da5e5408979347f36bcba9,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 35
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2f3b7351a7da5e5408979347f36bcba9,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 35
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 2f3b7351a7da5e5408979347f36bcba9,
         type: 3}
