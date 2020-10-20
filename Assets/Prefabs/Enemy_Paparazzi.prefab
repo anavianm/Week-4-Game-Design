@@ -172,10 +172,11 @@ MonoBehaviour:
     m_Bits: 512
   patrolPath:
   - {fileID: 0}
-  timeBetweenAttacks: 0
-  projectile: {fileID: 0}
+  timeBetweenAttacks: 0.2
+  projectile: {fileID: 8813436652289860739, guid: ff9556559e4834dcfac41128b1617033,
+    type: 3}
   sightRange: 4
-  attackRange: 1
+  attackRange: 4
 --- !u!82 &7235119696022973727
 AudioSource:
   m_ObjectHideFlags: 0

@@ -23,6 +23,9 @@ public class PlayerHealth : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             TakeDamage(2);
+        }else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
         }
     }
     void OnTriggerEnter(Collider other)

@@ -12,12 +12,16 @@ public class GameEvents : MonoBehaviour
     public TextMeshProUGUI scenemover;
 
     void Update()
+           {
+       
+            if (slider.value == 0 && (nextlvl-2) > 0){
+                    SceneManager.LoadScene("Scene" + (nextlvl-2).ToString());
+            }else if(slider.value == 0 && (nextlvl - 2) == 0)
             {
-               if(slider.value == 0){
                 SceneManager.LoadScene("Scene1");
-                }
-        scenemover.text = (nextlvl - 1).ToString();
             }
+            scenemover.text = (nextlvl - 1).ToString();
+     }
 
     void OnTriggerEnter(Collider other)
     {
