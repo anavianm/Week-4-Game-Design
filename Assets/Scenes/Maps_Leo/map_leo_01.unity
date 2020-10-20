@@ -2069,6 +2069,12 @@ PrefabInstance:
       propertyPath: patrolPath.Array.data[3]
       value: 
       objectReference: {fileID: 8662241}
+    - target: {fileID: 3831210011688651440, guid: 8a71c8187adae8e4796dca1f40d5b3bd,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 7008762624862626125, guid: e8aa5891bf2bf4780851dc9ee943f94e,
+        type: 3}
     - target: {fileID: 4173245745334078957, guid: 8a71c8187adae8e4796dca1f40d5b3bd,
         type: 3}
       propertyPath: m_Name

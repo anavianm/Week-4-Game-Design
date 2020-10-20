@@ -172,7 +172,8 @@ MonoBehaviour:
   patrolPath:
   - {fileID: 0}
   timeBetweenAttacks: 0
-  projectile: {fileID: 0}
+  projectile: {fileID: 7008762624862626125, guid: e8aa5891bf2bf4780851dc9ee943f94e,
+    type: 3}
   sightRange: 4
   attackRange: 1
 --- !u!1001 &3831210011227412488

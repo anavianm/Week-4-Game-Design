@@ -1,10 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EnemyAi.cs">
     <Files>
-      <File FileName="Assets/Scripts/EnemyAi.cs" Line="40" Column="6" />
-      <File FileName="Assets/PlayerHealth.cs" Line="32" Column="25" />
-      <File FileName="Assets/HealthBar.cs" Line="18" Column="6" />
-      <File FileName="Assets/Scripts/GoalManager.cs" Line="14" Column="48" />
+      <File FileName="Assets/Scripts/EnemyAi.cs" Line="89" Column="1" />
+      <File FileName="Assets/Scripts/GameEvents.cs" Line="12" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
