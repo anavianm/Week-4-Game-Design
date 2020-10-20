@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameEvents : MonoBehaviour
 {
     public Slider slider;
-    public int SceneCount;
-    private int counter = 1;
+    public int nextlvl;
+    public TextMeshProUGUI scenemover;
 
     void Update()
             {
                if(slider.value == 0){
-                SceneManager.LoadScene("EnemyAiTest");
+                SceneManager.LoadScene("Scene1");
                 }
+        scenemover.text = (nextlvl - 1).ToString();
             }
 
     void OnTriggerEnter(Collider other)
@@ -22,11 +24,8 @@ public class GameEvents : MonoBehaviour
         
         if (other.gameObject.tag == "Point")
         {
-            Debug.Log("Collision" + counter);
-if(SceneCount - counter != counter){
-            SceneManager.LoadScene("Scene"+ counter);
-}
-counter++;
+        
+            SceneManager.LoadScene("Scene"+ nextlvl);
 
         }
     }
